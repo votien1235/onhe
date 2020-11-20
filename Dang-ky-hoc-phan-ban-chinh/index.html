@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin tài khoản</title>
+    <link rel="stylesheet" href="./CSS/Main.css">
+    <LINK REL="SHORTCUT ICON" HREF="./Image/icon.jpg">
+    <!-- Script  -->
+    <!-- fire base  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCh5KOwdMPrF4k1iBbc3-1b980VE0VpWKc",
+            authDomain: "dang-ky-hoc-phan.firebaseapp.com",
+            databaseURL: "https://dang-ky-hoc-phan.firebaseio.com",
+            projectId: "dang-ky-hoc-phan",
+            storageBucket: "dang-ky-hoc-phan.appspot.com",
+            messagingSenderId: "648283742702",
+            appId: "1:648283742702:web:9192dd2eccb428358d6eff"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <!-- Random - md5 password -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.1/uuid.min.js"
+        integrity="sha512-4JH7nC4nSqPixxbhZCLETJ+DUfHa+Ggk90LETm25fi/SitneSvtxkcWAUujvYrgKgvrvwv4NDAsFgdwCS79Dcw=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"
+        integrity="sha512-nOQuvD9nKirvxDdvQ9OMqe2dgapbPB7vYAMrzJihw5m+aNcf0dX53m6YxM4LgA9u8e9eg9QX+/+mPu8kCNpV2A=="
+        crossorigin="anonymous"></script>
+    <!-- Navigo - chuyển đổi địa chỉ trang  -->
+    <script src="//unpkg.com/navigo@6"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <!-- Css  -->
+
+    <link rel="stylesheet" href="./CSS/Main.css">
+
+</head>
+
+<!-- body  -->
+
+<body>
+    <div id="container">
+        <div class="head">
+            <!-- Navbar -->
+            <main-navbar title1="Đăng ký học phần" title2="Thông tin học phần" title3="Thông tin tài khoản">
+            </main-navbar>
+            <button id="btn-login">Login</button>
+            <button id="admin-register">ADMIN</button>
+
+            <div id="id01" class="modal">
+
+                <form class="modal-content animate" method="post">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                            title="Close Modal">&times;</span>
+                        <img src="./Image/img_avatar2.png" alt="Avatar" class="avatar">
+                    </div>
+
+                    <div class="container">
+                        <form-login></form-login>
+                    </div>
+
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                            class="cancelbtn">Cancel</button>
+                        <span class="psw">Forgot <a href="#">password?</a></span>
+                    </div>
+                </form>
+            </div>
+            <div id="id02" class="modal">
+
+                <form class="modal-content animate" method="post">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('id02').style.display='none'" class="close"
+                            title="Close Modal">&times;</span>
+                        <img src="./Image/img_avatar2.png" alt="Avatar" class="avatar">
+                    </div>
+
+                    <div class="container">
+                        <form-login-admin></form-login-admin>
+                    </div>
+
+                    <div class="container" style="background-color:#f1f1f1">
+                        <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                            class="cancelbtn">Cancel</button>
+                        <span class="psw">Forgot <a href="#">password?</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="app">
+            <img style="width: 100%" src="./Image/screenshot_1605811525.png" alt="">
+        </div>
+        <div class="footer">
+            <img id="imageFooter" src="./Image/banner_left.png" alt="">
+        </div>
+    </div> -->
+
+    <!-- <table class="table table-bordered table-hover" >
+        <thead class="bg-primary">
+           <tr>
+              <th>STT</th>
+              <th>Mã Học Phần</th>
+              <th>Tên Học Phần</th>
+              <th>Tên Giảng Viên</th>
+              <th>Lớp Học Phần</th>
+              <th>Số TC</th>
+              <th>Học Phí</th>
+           </tr>
+        </thead>
+        <tbody>
+           <tr>
+              <td>1</td>
+              <td>Java</td>
+              <td>14.21%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+           </tr>
+           <tr>
+              <td>2</td>
+              <td>C</td>
+              <td>11.03%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+           </tr>
+           <tr>
+            <td>3</td>
+            <td>C++</td>
+            <td>5.60%</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+         </tr>
+        </tbody>
+     </table>
+
+    <div id="app">
+        change here !!!
+    </div>
+
+</body>
+
+<!-- Template -->
+    <object-list-template></object-list-template>
+    <!-- object  -->
+    <template id="object-container-template">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href=".">
+        <div class="object-container">
+            <table class="table table-bordered table-hover"
+                style="width: 95%; table-layout: fixed; margin: 0; padding:0 ;">
+                <tbody>
+                    <tr>
+                        <td width="5%" id="number">1</td>
+                        <td width="10%" id="object-id">Java</td>
+                        <td width="20%" id="object-name">14.21%</td>
+                        <td width="20%" id="teacher-name">14.21%</td>
+                        <td width="20%" id="class">14.21%</td>
+                        <td width="10%" id="number-tc">14.21%</td>
+                        <td id="tuition">12345</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+    <template id="object-list-template">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href=".">
+
+        <div class="object-list-container">
+            <h1>Thông tin học phần</h1>
+            <h2 id="name"></h2>
+
+            <table class="table table-bordered table-hover"
+                style="width: 95%; table-layout: fixed; margin: 0; padding:0 ;">
+                <thead class="bg-primary">
+                    <tr>
+                        <th width="5%">STT</th>
+                        <th width="10%">Mã Học Phần</th>
+                        <th width="20%">Tên Học Phần</th>
+                        <th width="20%">Tên Giảng Viên</th>
+                        <th width="20%">Lớp Học Phần</th>
+                        <th width="10%">Số TC</th>
+                        <th>Học Phí</th>
+                        <!-- <th>Đăng ký</th> -->
+                    </tr>
+                </thead>
+            </table>
+            <div id="objects">
+                <!-- <object-container number="1" object-id="HP01" object-name="Cơ sở dữ liệu" teacher-name="Bùi Thị Oanh"
+                class="TH24.40" number-tc="4" tuition="1000000"></object-container> -->
+            </div>
+            <!-- <div id="date-modified"></div> -->
+        </div>
+    </template>
+
+    <!-- navbar -->
+    <template id="main-navbar">
+        <link rel="stylesheet" href="./CSS/Navbar.css">
+        <div class="navbar-container">
+            <!-- <img id="logo" src="https://th.bing.com/th/id/OIP.UvPmeXXOx8sum2VNytWzeAHaJr?pid=Api&rs=1" alt=""> -->
+            <div id="title">
+                <div id="title1">title1</div>
+                <div id="title2">title2</div>
+                <div id="title3">title3</div>
+            </div>
+
+
+        </div>
+    </template>
+    <!-- student-profile -->
+    <template id="student-profile-template">
+        <link rel="stylesheet" href="./CSS/StudentProfile.css">
+        <div class="profile-container">
+            <h1>Thông tin sinh viên</h1>
+            <img src="./Image/trend-avatar-11.jpg" alt="Avatar" id="avatar">
+            <div id="imformation-container">
+                <input-wrapper-student id="student-id" label="Mã sinh viên:" value="12345678"></input-wrapper-student>
+                <input-wrapper-student id="full-name" label="Họ và tên:" value="Nguyễn Văn A"></input-wrapper-student>
+                <input-wrapper-student id="date-of-birth" label="Ngày sinh:" value="01/01/2001"></input-wrapper-student>
+                <input-wrapper-student id="majors" label="Ngành học:" value="Công Nghệ thông tin">
+                </input-wrapper-student>
+                <input-wrapper-student id="course" label="Khóa học:" value="K24"></input-wrapper-student>
+                <!-- <inputwrapper-student id="day-register" label="Ngày đăng ký:" value="2/1/2020"></inputwrapper-student> -->
+
+            </div>
+        </div>
+    </template>
+    <template id="input-wrapper-student-template">
+        <link rel="stylesheet" href="./CSS/InputWrapper.css">
+        <div class="input-wrapper-x">
+            <label for="" id="infomation-label">label</label>
+            <div id="information-child">information-child</div>
+        </div>
+    </template>
+    <!-- login -->
+    <template id="template-input-wrapper">
+        <link rel="stylesheet" href="./css/inputWrapper.css">
+        <div class="input-wrapper">
+            <label for="" id="input-label"></label>
+            <input type="text" id="input-main">
+            <div id="input-error"></div>
+        </div>
+    </template>
+    <!-- <template id="template-form-register">
+        <form class="form-register">
+            <h2>Đăng kí tài khoản</h2>
+            <input-wrapper id="name" label="Tên đăng kí" type="text" error="" value=""></input-wrapper>
+            <input-wrapper id="email" label="Email" type="email" error="" value=""></input-wrapper>
+            <input-wrapper id="password" label="Mật khẩu" type="password" error="" value=""></input-wrapper>
+            <input-wrapper id="password-confirmation" label="Xác thực mật khẩu" type="password" error="" value="">
+            </input-wrapper>
+            <button>Đăng kí</button>
+            <a href="#/sign-in" id="login-link">Đã có tài khoản? Đăng nhập</a>
+        </form>
+    </template> -->
+    <template id="form-login-template">
+        <form class="form-login">
+            <link rel="stylesheet" href="./css/login.css">
+            <div id="main-login">
+                <input-wrapper id="student-id" label="Mã Sinh Viên" type="text" placeholder="Nhập mã sinh viên">
+                </input-wrapper>
+                <input-wrapper id="password" label='Mật khẩu' type="password" placeholder="Nhập mật khẩu">
+                </input-wrapper>
+            </div>
+            <button id="login-btn">đăng nhập</button>
+
+        </form>
+    </template>
+    <template id="form-login-admin-template">
+        <form class="form-login-admin">
+            <link rel="stylesheet" href="./css/login.css">
+            <div id="main-login-admin">
+                <input-wrapper id="admin-id" label="Username" type="text" placeholder="Nhập tên đăng nhập">
+                </input-wrapper>
+                <input-wrapper id="password" label='Mật khẩu' type="password" placeholder="Nhập mật khẩu">
+                </input-wrapper>
+            </div>
+            <button id="login-btn">đăng nhập</button>
+
+        </form>
+    </template>
+    <template id="template-form-register">
+        <form class="form-register">
+            <link rel="stylesheet" href="./css/register.css">
+            <h2>Tạo tài khoản cho SV</h2>
+            <input-wrapper id="student-id" label="Mã sinh viên" type="text" error="" value=""
+                placeholder="mã sinh viên"></input-wrapper>
+            <input-wrapper id="full-name" label="Họ và tên" type="text" error="" value="" placeholder="họ và tên">
+            </input-wrapper>
+            <input-wrapper id="date-of-birth" label="Ngày sinh:" type="text" error="" value="" placeholder="ngày sinh">
+            </input-wrapper>
+            <input-wrapper id="sex" label="Giới tính" type="text" error="" value="" placeholder="Giới tính">
+            </input-wrapper>
+            <input-wrapper id="email" label="Email" type="email" error="" value="" placeholder="Email"></input-wrapper>
+            <input-wrapper id="majors" label="Ngành học:" type="text" error="" value="" placeholder="Ngành học">
+            </input-wrapper>
+            <input-wrapper id="number-phone" label="Số điện thoại:" type="text" error="" value="" placeholder="Sđt">
+            </input-wrapper>
+            <input-wrapper id="password" label="Mật khẩu" type="password" error="" value="" placeholder="Mật khẩu">
+            </input-wrapper>
+            <input-wrapper id="password-confirmation" label="Xác thực mật khẩu" type="password" error="" value=""
+                placeholder="Xác thực mật khẩu">
+            </input-wrapper>
+            <button id="register-btn">Đăng kí</button>
+            <!-- <a href="#/sign-in" id="login-link"></a> -->
+        </form>
+    </template>
+
+
+    <!-- Script -->
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <!-- from file -->
+    <script src="./JS/Navbar.js"></script>
+    <script src="./JS/app.js" type="module"></script>
+
+</html>
